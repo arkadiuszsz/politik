@@ -16,12 +16,15 @@ class CreateGovernmentTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->softDeletes();
 
-			/* Prime minister of the government. */
-			$table->integer('prime_minister_id');			
-			$table->foreign('prime_minister_id')
-				->references('id')->on('user')
+			/* Time frames. */
+			$table->dateTime('begins_at');
+			$table->dateTime('ends_at');
+
+			/* State the government rules. */
+			$table->integer('state_id');
+			$table->foreign('state_id')
+				->references('id')->on('state')
 				->onDelete('cascade');
 		});
 	}

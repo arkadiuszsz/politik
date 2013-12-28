@@ -18,7 +18,8 @@ class CreateMinisterTable extends Migration {
 			$table->timestamps();
 			
 			/* Responsibilities. */
-			$table->boolean('canChangeTaxRate')->default(false);
+			$table->boolean('isPrimeMinister')->default(false);
+			$table->boolean('canChangeTaxRates')->default(false);
 			/* ... */
 			
 			/* User holding the office. */
@@ -27,7 +28,7 @@ class CreateMinisterTable extends Migration {
 				->references('id')->on('user')
 				->onDelete('cascade');
 
-			/* Government that the office belongs to. */
+			/* Government the office belongs to. */
 			$table->integer('government_id');
 			$table->foreign('government_id')
 				->references('id')->on('government')

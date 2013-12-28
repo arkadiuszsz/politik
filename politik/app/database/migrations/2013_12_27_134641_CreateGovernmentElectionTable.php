@@ -27,6 +27,12 @@ class CreateGovernmentElectionTable extends Migration {
 			$table->foreign('state_id')
 				->references('id')->on('state')
 				->onDelete('cascade');
+
+			/* Elected government. */
+			$table->integer('government_id')->nullable();			
+			$table->foreign('government_id')
+				->references('id')->on('government')
+				->onDelete('cascade');
 		});
 	}
 

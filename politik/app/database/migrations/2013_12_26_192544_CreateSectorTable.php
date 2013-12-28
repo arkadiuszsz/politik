@@ -14,21 +14,26 @@ class CreateSectorTable extends Migration {
 	{
 		Schema::create('sector', function(Blueprint $table)
 		{
-			$table->increments('id');
 			$table->timestamps();
-			
+
+			/* Forbids altering the sector during the game. */
+			$table->boolean('isLocked')->default(false);
+			/* Flag for the non-land sectors like salt water, or... lava */
+			$table->boolean('isNotLand')->default(false);
+
 			/* Cooridnates on the map. */
 			$table->integer('x')->unsigned();
 			$table->integer('y')->unsigned();
-
-			/* Index on the coordinates. */
-			$table->index(array('x', 'y'));
+			/* Make it a composite primary key */
+			$table->primary(array('x', 'y'));
 
 			/* Sovereign state. */
-			$table->integer('state_id');
+			$table->integer('state_id')->nullable();
 			$table->foreign('state_id')
 				->references('id')->on('state')
-				->onDelete('cascade');
+				->onDelete('set null');
+
+			/* TODO: sector natural resources like water, coal, gold etc. */	
 		});
 	}
 
