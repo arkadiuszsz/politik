@@ -16,7 +16,6 @@ class CreateStateTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->softDeletes();
 
 			/* ISO 3166-1 compilant three letter country code. */
 			$table->string('code', 3)->unique();

@@ -16,7 +16,6 @@ class CreateGovernmentElectionTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->softDeletes();
 
 			/* Time frames. */
 			$table->dateTime('begins_at');

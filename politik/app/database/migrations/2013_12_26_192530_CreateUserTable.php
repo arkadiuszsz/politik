@@ -24,7 +24,13 @@ class CreateUserTable extends Migration {
 			$table->string('password');
 
 			/* Markdown-formatted user. */
-			$table->longText('about');
+			$table->longText('about')->nullable();
+
+			/* Current position */
+			$table->integer('x')->unsigned();
+			$table->integer('y')->unsigned();
+			$table->foreign(array('x', 'y'))
+				->references(array('x', 'y'))->on('sector');
 		});
 	}
 
