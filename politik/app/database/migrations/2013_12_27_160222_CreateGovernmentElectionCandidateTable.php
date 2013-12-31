@@ -14,6 +14,7 @@ class CreateGovernmentElectionCandidateTable extends Migration {
 	{
 		Schema::create('government_election_candidate', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->timestamps();
 
 			/* Markdown-formatted manifesto. */
@@ -31,8 +32,8 @@ class CreateGovernmentElectionCandidateTable extends Migration {
 				->references('id')->on('user')
 				->onDelete('cascade');
 
-			/* Primary key on election and candidate ids. */
-			$table->primary(array('election_id', 'candidate_id'));
+			/* Unique key on election and candidate ids. */
+			$table->unique(array('election_id', 'candidate_id'));
 		});
 	}
 

@@ -14,6 +14,7 @@ class CreateSectorTable extends Migration {
 	{
 		Schema::create('sector', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->timestamps();
 
 			/* Forbids altering the sector during the game. */
@@ -24,8 +25,7 @@ class CreateSectorTable extends Migration {
 			/* Cooridnates on the map. */
 			$table->integer('x')->unsigned();
 			$table->integer('y')->unsigned();
-			/* Make it a composite primary key */
-			$table->primary(array('x', 'y'));
+			$table->unique(array('x', 'y'));
 
 			/* Sovereign state. */
 			$table->integer('state_id')->nullable();

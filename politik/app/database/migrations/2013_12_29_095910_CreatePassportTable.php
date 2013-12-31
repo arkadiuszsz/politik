@@ -14,6 +14,7 @@ class CreatePassportTable extends Migration {
 	{
 		Schema::create('passport', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->timestamps();
 			
 			/* Passport owner. */
@@ -28,7 +29,8 @@ class CreatePassportTable extends Migration {
 				->references('id')->on('state')
 				->onDelete('cascade');
 
-			$table->primary(array('user_id', 'state_id'));
+			/* Unique key on owner and state ids. */
+			$table->unique(array('user_id', 'state_id'));
 		});
 	}
 

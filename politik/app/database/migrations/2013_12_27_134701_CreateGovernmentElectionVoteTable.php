@@ -14,6 +14,7 @@ class CreateGovernmentElectionVoteTable extends Migration {
 	{
 		Schema::create('government_election_vote', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->timestamps();
 
 			/* Election the vote belongs to. */
@@ -39,8 +40,8 @@ class CreateGovernmentElectionVoteTable extends Migration {
 				->references('id')->on('user')
 				->onDelete('cascade');
 
-			/* Primary key on election and elector ids. */
-			$table->primary(array('election_id', 'elector_id'));
+			/* Unique key on election and elector ids. */
+			$table->unique(array('election_id', 'elector_id'));
 		});
 	}
 

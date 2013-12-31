@@ -14,6 +14,7 @@ class CreateMinisterTable extends Migration {
 	{
 		Schema::create('minister', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->timestamps();
 			
 			/* Responsibilities. */
@@ -33,8 +34,8 @@ class CreateMinisterTable extends Migration {
 				->references('id')->on('user')
 				->onDelete('cascade');
 
-			/* Primary key on government and minister ids. */
-			$table->primary(array('government_id', 'minister_id'));
+			/* Unique key on government and minister ids. */
+			$table->unique(array('government_id', 'minister_id'));
 		});
 	}
 
