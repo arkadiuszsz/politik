@@ -16,10 +16,10 @@ class CreateGovernmentTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+			$table->softDeletes();
 
-			/* Time frames. */
-			$table->dateTime('begins_at');
-			$table->dateTime('ends_at');
+			/* Term of office. */
+			$table->date('expires_at')->nullable();
 
 			/* State the government rules. */
 			$table->integer('state_id');

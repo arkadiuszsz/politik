@@ -18,9 +18,9 @@ class CreateSectorTable extends Migration {
 			$table->timestamps();
 
 			/* Forbids altering the sector during the game. */
-			$table->boolean('isLocked')->default(false);
+			$table->boolean('is_locked')->default(false);
 			/* Flag for the non-land sectors like salt water, or... lava */
-			$table->boolean('isNotLand')->default(false);
+			$table->boolean('is_not_land')->default(false);
 
 			/* Cooridnates on the map. */
 			$table->integer('x')->unsigned();

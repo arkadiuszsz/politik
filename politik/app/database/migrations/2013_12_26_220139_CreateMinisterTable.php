@@ -18,8 +18,8 @@ class CreateMinisterTable extends Migration {
 			$table->timestamps();
 			
 			/* Responsibilities. */
-			$table->boolean('isPrimeMinister')->default(false);
-			$table->boolean('canChangeTaxRates')->default(false);
+			$table->boolean('is_prime_minister')->default(false);
+			$table->boolean('can_change_tax_rates')->default(false);
 			/* ... */
 
 			/* Government the office belongs to. */

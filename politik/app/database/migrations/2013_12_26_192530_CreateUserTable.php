@@ -27,10 +27,10 @@ class CreateUserTable extends Migration {
 			$table->longText('about')->nullable();
 
 			/* Current position */
-			$table->integer('x')->unsigned();
-			$table->integer('y')->unsigned();
-			$table->foreign(array('x', 'y'))
-				->references(array('x', 'y'))->on('sector');
+			$table->integer('sector_id')->nullable();
+			$table->foreign('sector_id')
+				->references('id')->on('sector')
+				->onDelete('restrict');
 		});
 	}
 
