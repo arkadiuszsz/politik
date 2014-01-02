@@ -1,11 +1,13 @@
 <?php
 
+namespace Politik\Entities;
+
 /**
  * Class: Minister
  *
  * @see Eloquent
  */
-class Minister extends Eloquent {
+class Minister extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
@@ -19,7 +21,7 @@ class Minister extends Eloquent {
 	 */
 	public function user()
 	{
-		return $this->belongsTo('User', 'minister_id');
+		return $this->belongsTo('Politik\Entities\User', 'minister_id');
 	}
 
 	/**
@@ -27,6 +29,6 @@ class Minister extends Eloquent {
 	 */
 	public function government()
 	{
-		return $this->belongsTo('Government');
+		return $this->belongsTo('Politik\Entities\Government');
 	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Politik\Entities;
+
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
@@ -10,7 +12,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
  * @see RemindableInterface
  * @see Eloquent
  */
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends \Eloquent implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
@@ -68,7 +70,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function passports()
 	{
-		return $this->hasMany('Passport', 'owner_id');
+		return $this->hasMany('Politik\Entities\Passport', 'owner_id');
 	}
 
 	/**
@@ -77,7 +79,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function governmentElectionVotes()
 	{
-		return $this->hasMany('GovernmentElectionVote', 'elector_id');
+		return $this->hasMany('Politik\Entities\GovernmentElectionVote', 'elector_id');
 	}
 
 	/**
@@ -85,7 +87,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function governmentElectionCandidacies()
 	{
-		return $this->hasMany('GovernmentElectionCandidate', 'candidate_id');
+		return $this->hasMany('Politik\Entities\GovernmentElectionCandidate', 'candidate_id');
 	}
 
 	/**
@@ -93,7 +95,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function offices()
 	{
-		return $this->hasMany('Minister', 'minister_id');
+		return $this->hasMany('Politik\Entities\Minister', 'minister_id');
 	}
 
 	/**
@@ -101,6 +103,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function position()
 	{
-		return $this->belongsTo('Sector', 'position_id');
+		return $this->belongsTo('Politik\Entities\Sector', 'position_id');
 	}
 }

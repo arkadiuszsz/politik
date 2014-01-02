@@ -1,11 +1,13 @@
 <?php
 
+namespace Politik\Entities;
+
 /**
  * Class: Passport
  *
  * @see Eloquent
  */
-class Passport extends Eloquent {
+class Passport extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
@@ -19,7 +21,7 @@ class Passport extends Eloquent {
 	 */
 	public function owner()
 	{
-		return $this->belongsTo('User', 'owner_id');
+		return $this->belongsTo('Politik\Entities\User', 'owner_id');
 	}
 
 	/**
@@ -27,6 +29,6 @@ class Passport extends Eloquent {
 	 */
 	public function state()
 	{
-		return $this->belongsTo('State');
+		return $this->belongsTo('Politik\Entities\State');
 	}
 }

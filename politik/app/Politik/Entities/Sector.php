@@ -1,11 +1,13 @@
 <?php
 
+namespace Politik\Entities;
+
 /**
  * Class: Sector
  *
  * @see Eloquent
  */
-class Sector extends Eloquent {
+class Sector extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
@@ -31,7 +33,7 @@ class Sector extends Eloquent {
 	 */
 	public function state()
 	{
-		return $this->belongsTo('State');
+		return $this->belongsTo('Politik\Entities\State');
 	}
 
 	/**
@@ -39,6 +41,6 @@ class Sector extends Eloquent {
 	 */
 	public function inhabitants()
 	{
-		return $this->hasMany('User');
+		return $this->hasMany('Politik\Entities\User');
 	}
 }

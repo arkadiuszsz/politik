@@ -1,11 +1,13 @@
 <?php
 
+namespace Politik\Entities;
+
 /**
  * Class: Government
  *
  * @see Eloquent
  */
-class Government extends Eloquent {
+class Government extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
@@ -26,7 +28,7 @@ class Government extends Eloquent {
 	 */
 	public function state()
 	{
-		return $this->belongsTo('State');
+		return $this->belongsTo('Politik\Entities\State');
 	}
 
 	/**
@@ -34,7 +36,7 @@ class Government extends Eloquent {
 	 */
 	public function election()
 	{
-		return $this->hasOne('GovernmentElection', 'election_id');
+		return $this->hasOne('Politik\Entities\GovernmentElection', 'election_id');
 	}
 
 	/**
@@ -42,6 +44,6 @@ class Government extends Eloquent {
 	 */
 	public function ministers()
 	{
-		return $this->hasMany('Minister');
+		return $this->hasMany('Politik\Entities\Minister');
 	}
 }
