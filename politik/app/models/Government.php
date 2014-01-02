@@ -13,6 +13,13 @@ class Government extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'government';
+	
+	/**
+	 * Indicates that the model should be soft-deleted by default.
+	 *
+	 * @var mixed
+	 */
+	protected $softDelete = true;
 
 	/**
 	 * Many-to-one relationship with State.
