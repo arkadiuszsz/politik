@@ -82,6 +82,10 @@ angular.module('uiApp')
               localStyle.fillColor = data.stateColors[state];
             }
           }
+          else{
+            localStyle.fillColor = 'none';
+            localStyle.color = 'none';
+          }
           
           return localStyle;
           

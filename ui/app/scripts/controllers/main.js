@@ -6,17 +6,21 @@ angular.module('uiApp')
     /* Set map tiles. */
     angular.extend($scope, {
       tiles: {
-        url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
+        url: 'http://{s}.tile.cloudmade.com/7ba62ab411f443599beb2d5a22980f90/118392/256/{z}/{x}/{y}.png'
+      },
+      center: {
+        lat: 49,
+        lng: 12,
+        zoom: 5
       }
     });
     
     /* Generate map. */
     var style = {
-      fillColor: 'grey',
+      fillColor: 'white',
       weight: 2,
-      opacity: 1,
-      color: 'black',
-      dashArray: '3',
+      opacity: 0.25,
+      color: '#b9c6d0',
       fillOpacity: 1
     };
     mapRepository.generateMap(style).then(function (map) {
