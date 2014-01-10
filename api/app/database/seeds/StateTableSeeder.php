@@ -1,5 +1,8 @@
 <?php
 
+use Politik\Entities\State;
+use Politik\Entities\Sector;
+
 /**
  * Class: StateTableSeeder
  *
@@ -10,15 +13,17 @@ class StateTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('state')->delete();
-		$poland = State::create(array(
-			'code' => 'pol',
+		State::create(array(
+			'code' => 'POL',
 			'name' => 'Rzeczpospolita Polska',
 		));
-		Sector::whereBetween('x', array(1, 3))
-			->whereBetween('y', array(1, 3))
-			->get()
-			->each(function ($sector) use ($poland) {
-				$sector->state = $poland;
-			});
+		State::create(array(
+			'code' => 'DEU',
+			'name' => 'Bundesrepublik Deutschland',
+		));
+		State::create(array(
+			'code' => 'FRA',
+			'name' => 'République française',
+		));
 	}
 }

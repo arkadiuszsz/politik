@@ -27,7 +27,7 @@ class CreateUserTable extends Migration {
 			$table->longText('about')->nullable();
 
 			/* Current position */
-			$table->integer('sector_id')->nullable();
+			$table->string('sector_id');
 			$table->foreign('sector_id')
 				->references('id')->on('sector')
 				->onDelete('restrict');

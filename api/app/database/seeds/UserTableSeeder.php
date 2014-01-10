@@ -1,5 +1,7 @@
 <?php
 
+use Politik\Entities\User;
+
 /**
  * Class: UserTableSeeder
  *
@@ -14,7 +16,7 @@ class UserTableSeeder extends Seeder {
 			'nickname' => 'admin',
 			'email' => 'admin@politik.orsn.eu.org',
 			'password' => Hash::make('secret'),
-			'sector_id' => Sector::coordinates('2', '2')->first()->id,
+			'sector_id' => 'PL-SK',
 			'about' => "
 				My life
 				=======

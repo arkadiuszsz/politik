@@ -1,5 +1,9 @@
 <?php
 
+use Politik\Entities\Minister;
+use Politik\Entities\State;
+use Politik\Entities\User;
+
 /**
  * Class: MinisterTableSeeder
  *
@@ -11,7 +15,7 @@ class MinisterTableSeeder extends Seeder {
 	{
 		DB::table('minister')->delete();
 		Minister::create(array(
-			'government_id' => State::whereCode('pol')->first()->government->id,
+			'government_id' => State::whereCode('POL')->first()->government->id,
 			'minister_id' => User::whereEmail('admin@politik.orsn.eu.org')->first()->id,
 			'is_prime_minister' => true,
 		));

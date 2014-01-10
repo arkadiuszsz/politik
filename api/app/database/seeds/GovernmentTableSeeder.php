@@ -1,5 +1,8 @@
 <?php
 
+use Politik\Entities\Government;
+use Politik\Entities\State;
+
 /**
  * Class: GovernmentTableSeeder
  *
@@ -11,7 +14,7 @@ class GovernmentTableSeeder extends Seeder {
 	{
 		DB::table('government')->delete();
 		Government::create(array(
-			'state_id' => State::whereCode('pol')->first()->id,
+			'state_id' => State::whereCode('POL')->first()->id,
 		));
 	}
 }

@@ -1,7 +1,7 @@
 'use strict';
     
-angular.module('uiApp')
-  .controller('MainCtrl', function ($scope, $http, mapRepository) {
+angular.module('UiApp')
+  .controller('MainCtrl', function ($scope, $http, MapRepository) {
     
     /* Set map tiles. */
     angular.extend($scope, {
@@ -19,11 +19,11 @@ angular.module('uiApp')
     var style = {
       fillColor: 'white',
       weight: 2,
-      opacity: 0.25,
+      opacity: 0.5,
       color: '#b9c6d0',
       fillOpacity: 1
     };
-    mapRepository.generateMap(style).then(function (map) {
+    MapRepository.getMapPromise(style).then(function (map) {
       angular.extend($scope, {
         geojson: map
       });

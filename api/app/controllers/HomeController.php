@@ -1,5 +1,7 @@
 <?php
 
+use Politik\Repositories\SectorRepositoryInterface;
+
 class HomeController extends BaseController {
 
 	/*
@@ -15,9 +17,14 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	public function __construct(SectorRepositoryInterface $sectors)
+	{
+		$this->sectors = $sectors;
+	}
+
 	public function showWelcome()
 	{
-		return View::make('hello');
+		return Response::json($this->sectors->getSectors()->toArray());
 	}
 
 }

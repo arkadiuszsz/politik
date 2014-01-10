@@ -17,18 +17,6 @@ class Sector extends \Eloquent {
 	protected $table = 'sector';
 
 	/**
-	 * scopeCoordinates
-	 *
-	 * @param mixed $query
-	 * @param mixed $x
-	 * @param mixed $y
-	 */
-	public function scopeCoordinates($query, $x, $y)
-	{
-		return $query->whereX($x)->whereY($y);
-	}
-
-	/**
 	 * Many-to-one relationship with State.
 	 */
 	public function state()
@@ -42,5 +30,13 @@ class Sector extends \Eloquent {
 	public function inhabitants()
 	{
 		return $this->hasMany('Politik\Entities\User');
+	}
+
+	/**
+	 * Many-to-many relationship with neighbouring Sector(s).
+	 */
+	public function neighbours()
+	{
+		return $this->belongsToMany('Politik\Entities\Sector', 'neighbour', 'sector_id', 'neighbour_id');
 	}
 }

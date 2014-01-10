@@ -14,18 +14,9 @@ class CreateSectorTable extends Migration {
 	{
 		Schema::create('sector', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->string('id')->primary();
+			$table->string('name');
 			$table->timestamps();
-
-			/* Forbids altering the sector during the game. */
-			$table->boolean('is_locked')->default(false);
-			/* Flag for the non-land sectors like salt water, or... lava */
-			$table->boolean('is_not_land')->default(false);
-
-			/* Cooridnates on the map. */
-			$table->integer('x')->unsigned();
-			$table->integer('y')->unsigned();
-			$table->unique(array('x', 'y'));
 
 			/* Sovereign state. */
 			$table->integer('state_id')->nullable();
