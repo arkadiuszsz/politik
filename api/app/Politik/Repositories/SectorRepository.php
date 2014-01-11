@@ -9,7 +9,7 @@ class SectorRepository implements SectorRepositoryInterface {
 	public function alterState($id, $state)
 	{
 		$sector = Sector::findOrFail($id);
-		$sector->state_id = $state->id;
+		$sector->state()->associate($state);
 		$sector->save();
 	}
 	

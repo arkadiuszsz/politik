@@ -22,13 +22,13 @@ class CreateGovernmentElectionTable extends Migration {
 			$table->dateTime('ends_at');
 
 			/* State holding the election. */
-			$table->integer('state_id');			
+			$table->integer('state_id')->unsigned();			
 			$table->foreign('state_id')
 				->references('id')->on('state')
 				->onDelete('cascade');
 
 			/* Elected government. */
-			$table->integer('government_id')->nullable();			
+			$table->integer('government_id')->unsigned()->nullable();			
 			$table->foreign('government_id')
 				->references('id')->on('government')
 				->onDelete('cascade');

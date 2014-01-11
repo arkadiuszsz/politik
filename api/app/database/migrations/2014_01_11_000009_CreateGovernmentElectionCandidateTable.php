@@ -21,13 +21,13 @@ class CreateGovernmentElectionCandidateTable extends Migration {
 			$table->longText('manifesto')->nullable();
 
 			/* Election the user candidates in. */
-			$table->integer('election_id');			
+			$table->integer('election_id')->unsigned();			
 			$table->foreign('election_id')
 				->references('id')->on('government_election')
 				->onDelete('cascade');
 			
 			/* Candidating user. */
-			$table->integer('candidate_id');			
+			$table->integer('candidate_id')->unsigned();			
 			$table->foreign('candidate_id')
 				->references('id')->on('user')
 				->onDelete('cascade');

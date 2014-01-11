@@ -23,13 +23,13 @@ class CreateMinisterTable extends Migration {
 			/* ... */
 
 			/* Government the office belongs to. */
-			$table->integer('government_id');
+			$table->integer('government_id')->unsigned();
 			$table->foreign('government_id')
 				->references('id')->on('government')
 				->onDelete('cascade');
 			
 			/* User holding the office. */
-			$table->integer('minister_id');
+			$table->integer('minister_id')->unsigned();
 			$table->foreign('minister_id')
 				->references('id')->on('user')
 				->onDelete('cascade');

@@ -18,13 +18,13 @@ class CreatePassportTable extends Migration {
 			$table->timestamps();
 			
 			/* Passport owner. */
-			$table->integer('user_id');
+			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')
 				->references('id')->on('user')
 				->onDelete('cascade');
 
 			/* State issuing the passport. */
-			$table->integer('state_id');
+			$table->integer('state_id')->unsigned();
 			$table->foreign('state_id')
 				->references('id')->on('state')
 				->onDelete('cascade');

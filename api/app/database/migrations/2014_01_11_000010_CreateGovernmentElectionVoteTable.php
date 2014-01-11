@@ -18,13 +18,13 @@ class CreateGovernmentElectionVoteTable extends Migration {
 			$table->timestamps();
 
 			/* Election the vote belongs to. */
-			$table->integer('election_id');			
+			$table->integer('election_id')->unsigned();			
 			$table->foreign('election_id')
 				->references('id')->on('government_election')
 				->onDelete('cascade');
 			
 			/* Candidate the elector voted for. */
-			$table->integer('candidate_id');			
+			$table->integer('candidate_id')->unsigned();			
 			$table->foreign('candidate_id')
 				->references('id')->on('user')
 				->onDelete('cascade');
@@ -35,7 +35,7 @@ class CreateGovernmentElectionVoteTable extends Migration {
 				->on('government_election_candidate');
 	
 			/* Elector. */
-			$table->integer('elector_id');			
+			$table->integer('elector_id')->unsigned();			
 			$table->foreign('elector_id')
 				->references('id')->on('user')
 				->onDelete('cascade');

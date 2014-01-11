@@ -14,3 +14,6 @@
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/sector', 'SectorController@getAllSectors');
 Route::get('/sector/{id}', 'SectorController@getSector');
+Route::get('/state', 'StateController@getAllStatesWithSectors');
+Route::get('/state/{id}', 'StateController@getState')
+	->where('id', '[0-9]+');;

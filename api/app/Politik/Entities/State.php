@@ -55,4 +55,12 @@ class State extends \Eloquent {
 	{
 		return $this->belongsToMany('Politik\Entities\User', 'Politik\Entities\Passport', 'state_id', 'owner_id');
 	}
+
+	/**
+	 * One-to-many relationship with Sector.
+	 */
+	public function sectors()
+	{
+		return $this->hasMany('Politik\Entities\Sector');
+	}
 }

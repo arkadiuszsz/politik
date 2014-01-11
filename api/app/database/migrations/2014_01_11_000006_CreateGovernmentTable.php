@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSectorTable extends Migration {
+class CreateGovernmentTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,19 +12,20 @@ class CreateSectorTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sector', function(Blueprint $table)
+		Schema::create('government', function(Blueprint $table)
 		{
-			$table->string('id')->primary();
-			$table->string('name');
+			$table->increments('id');
 			$table->timestamps();
+			$table->softDeletes();
 
-			/* Sovereign state. */
-			$table->integer('state_id')->nullable();
+			/* Term of office. */
+			$table->date('expires_at')->nullable();
+
+			/* State the government rules. */
+			$table->integer('state_id')->unsigned();
 			$table->foreign('state_id')
 				->references('id')->on('state')
-				->onDelete('set null');
-
-			/* TODO: sector natural resources like water, coal, gold etc. */	
+				->onDelete('cascade');
 		});
 	}
 
@@ -35,7 +36,7 @@ class CreateSectorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sector');
+		Schema::drop('government');
 	}
 
 }

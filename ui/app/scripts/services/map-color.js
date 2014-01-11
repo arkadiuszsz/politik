@@ -4,7 +4,7 @@
  * ========
  * Service providing colors for the map.
  */
-   
+
 angular.module('UiApp').service('MapColor', function () {
 	/* Define available colors. */
 	this.colors = ['rgb(251,180,174)','rgb(179,205,227)','rgb(204,235,197)',

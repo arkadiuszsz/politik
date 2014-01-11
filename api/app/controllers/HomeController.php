@@ -1,7 +1,7 @@
 <?php
 
 use Politik\Repositories\SectorRepositoryInterface;
-
+use Politik\Entities\State;
 class HomeController extends BaseController {
 
 	/*
@@ -24,7 +24,8 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return Response::json($this->sectors->getSectors()->toArray());
+		$state = State::where('code', '=', 'DEU')->first();
+		return Response::json($state->sectors);
 	}
 
 }

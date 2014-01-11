@@ -1,38 +1,43 @@
 'use strict';
 
 /* MapRepository
- * =============
- * Service providing map data i.e. GeoJSON objects and sector information
- * from backend. All functions return $q promises.
+ * ===================
+ * Service providing interface for map data.
  */
-	 
-angular.module('UiApp')
-	.service('MapRepository', function ($q, $http, MapSectorRepository, MapStyle) {
+
+angular.module('UiApp').service('MapRepository', function ($http, $q) {
 	
-	/* Fetch GeoJSON data i.e. vector objects representing sectors on the map. */
-	this.geoPromise = $http.get('scripts/map.geojson').then(function (response) {
-		return response.data;
+	/* Fetch sectors data from backend. */
+	this.sectorsPromise = $http.get('api/sector', {cache: true}).then(
+		function (response) {
+			var sectors = {};
+			response.data.forEach(function (sector) {
+				sectors[sector.id] = sector;
+			});
+			return sectors;
+		}
+	);
+	
+	/* Fetch states data from backend. */
+	this.statesPromise = $http.get('api/state', {cache: true}).then(
+		function (response) {
+			var states = {};
+			response.data.forEach(function (state) {
+				states[state.id] = state;
+			});
+			return states;
+		}
+	);
+
+	/* Combine sectors and states. */
+	this.sectorsWithStatesPromise = $q.all([this.sectorsPromise, this.statesPromise]).then(function (responses) {
+		var sectors = responses[0];
+		var states = responses[1];
+		for(var id in sectors){
+			var sector = sectors[id];
+			sector.state = states[sector.state_id];
+		}
+		return sectors;
 	});
-		
-	/* Generate map object to be passed to leaflet. */
-	this.getMapPromise = function (style) {
-		var promise = $q.all([
-			this.geoPromise,
-			MapStyle.styleFactoryPromise,
-			MapSectorRepository.sectorsPromise
-		])
-		.then(function (responses) {
-			var geo = responses[0];
-			var styleFactory = responses[1];
-			var sectors = responses[2];
-			
-			var map = {};
-			map.data = geo;
-			map.style = styleFactory(style);
 
-			return map;
-		});
-
-		return promise;
-	};
 });

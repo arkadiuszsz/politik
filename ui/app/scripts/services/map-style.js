@@ -4,11 +4,11 @@
  * ========
  * Service providing map style generator.
  */
-   
-angular.module('UiApp').service('MapStyle', function (MapSectorRepository, MapColor) {
+
+angular.module('UiApp').service('MapStyle', function (MapRepository, MapColor) {
 
 	/* Returns a promise of a style factory. */
-	this.styleFactoryPromise = MapSectorRepository.sectorsPromise.then(function (sectors) {
+	this.styleFactoryPromise = MapRepository.sectorsPromise.then(function (sectors) {
 		var factory = function (style) {
 			var styleFunc = function (feature) {
 				

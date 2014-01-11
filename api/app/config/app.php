@@ -107,7 +107,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Politik\Repositories\SectorRepositoryProvider',
-
+		'Politik\Repositories\StateRepositoryProvider',
 	),
 
 	/*
