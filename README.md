@@ -9,4 +9,4 @@ Politik is a browser-based strategy game.
 * Laravel Framework
 
 ##Demo
-Live demo available [here]("http://politik.orsn.eu.org/").
+Live demo available [here](http://politik.orsn.eu.org/).
