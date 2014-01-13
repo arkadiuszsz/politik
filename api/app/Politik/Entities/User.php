@@ -36,6 +36,13 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	protected $softDelete = true;
 
 	/**
+	 * Appends additional fields in JSON.
+	 *
+	 * @var array
+	 */
+	protected $appends = array('avatar');
+
+	/**
 	 * Get the unique identifier for the user.
 	 *
 	 * @return mixed
@@ -104,5 +111,15 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	public function position()
 	{
 		return $this->belongsTo('Politik\Entities\Sector', 'position_id');
+	}
+
+	/**
+	 * Generate URL to gravatar.
+	 */
+	public function getAvatarAttribute()
+	{
+		$hash = md5(strtolower(trim($this->email)));
+		$url = "http://www.gravatar.com/avatar/$hash?d=retro";
+		return $url;
 	}
 }

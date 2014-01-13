@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
-Route::get('/sector', 'SectorController@getAllSectors');
-Route::get('/sector/{id}', 'SectorController@getSector');
-Route::get('/state', 'StateController@getAllStatesWithSectors');
-Route::get('/state/{id}', 'StateController@getState')
-	->where('id', '[0-9]+');;
+Route::get('/', array(
+	'before' => 'auth.basic.stateless',
+	'uses' => 'HomeController@showWelcome')
+);
+Route::resource('sector', 'SectorController', array('only' => array('index', 'show')));
+Route::resource('state', 'StateController', array('only' => array('index', 'show', 'update')));
+Route::resource('user', 'UserController', array('only' => array('index', 'show')));
+Route::post('/login', 'UserController@login');
+Route::post('/logout', 'UserController@logout');

@@ -35,9 +35,9 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+//	if (Auth::guest()) return Redirect::guest('login');
+	if (Auth::guest()) return App::abort(401);
 });
-
 
 Route::filter('auth.basic', function()
 {

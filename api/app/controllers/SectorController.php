@@ -2,21 +2,32 @@
 
 use Politik\Repositories\SectorRepositoryInterface;
 
-class SectorController extends BaseController {
-
+class SectorController extends \BaseController {
+	
 	public function __construct(SectorRepositoryInterface $sectors)
 	{
 		$this->sectors = $sectors;
 	}
 
-	public function getAllSectors()
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
 	{
 		return Response::json(
 			$this->sectors->getAllSectors()
 		);
 	}
-	
-	public function getSector($id)
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  string  $id
+	 * @return Response
+	 */
+	public function show($id)
 	{
 		return Response::json(
 			$this->sectors->getSector($id)
