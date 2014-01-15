@@ -119,7 +119,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	public function getAvatarAttribute()
 	{
 		$hash = md5(strtolower(trim($this->email)));
-		$url = "http://www.gravatar.com/avatar/$hash?d=retro";
+		$url = "http://www.gravatar.com/avatar/$hash?d=retro&s=150";
 		return $url;
 	}
 }

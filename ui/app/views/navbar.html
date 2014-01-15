@@ -11,8 +11,8 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<a type="button" class="btn-login navbar-btn navbar-right" href="#/login" ng-if="!auth.isLoggedIn">Sign in</a>
-	<a type="button" class="btn btn-default navbar-btn navbar-right" ng-click="logout()" ng-if="auth.isLoggedIn">Logout</a>
-	<p class="navbar-text navbar-right" ng-if="auth.isLoggedIn">
-		<img ng-src="{{ auth.user.avatar }}" alt="{{ auth.user.nickname }}" class="img-circle">
-	</p>
+	<div ng-if="auth.isLoggedIn">
+		<a type="button" class="btn btn-default navbar-btn navbar-right" ng-click="logout()">Logout</a>
+		<img ng-src="{{ auth.user.avatar }}" alt="{{ auth.user.nickname }}" class="img-circle navbar-avatar navbar-right">
+	</div>
 </div>

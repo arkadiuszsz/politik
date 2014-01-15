@@ -9,7 +9,9 @@ angular.module('Politik', [
 	'Security',
 	'Notifications',
 	'Map',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'ui.gravatar',
+	'vcRecaptcha'
 ])
 .config(function ($routeProvider) {
 	$routeProvider

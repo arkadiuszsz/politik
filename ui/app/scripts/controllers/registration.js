@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('Politik')
-.controller('RegistrationCtrl', function ($scope, $http, map) {
+.controller('RegistrationCtrl', function ($scope, $http, map, vcRecaptchaService) {
+
+	$scope.user = {};
+	$scope.recaptcha_public_key = '6LdMBO0SAAAAANYqlimNtPp9ZTw5kTyBO6ohzPks';
 
 	/* Set map tiles to run empty map early. */
 	angular.extend($scope, {
@@ -16,10 +19,28 @@ angular.module('Politik')
 	});
 	
 	/* Draw GetJSON layer on the existing map */
-	map.getMapPromise($scope).then(function (map) {
+	map.getMapPromise($scope.user).then(function (map) {
 		angular.extend($scope, {
 			geojson: map
 		});
 	});
-	
-});
+
+	$scope.submit = function (user) {
+	};	
+})
+.directive('ngIsEmailAvailable', ['$http', 'apiUrl', function ($http, api) {
+	return {
+		require: 'ngModel',
+		link: function (scope, elem, attrs, ctrl) {
+			elem.on('blur', function (e) {
+				scope.$apply(function () {
+					var email = elem.val();
+					$http.post(api.isEmailAvailable, { email: email })
+					.success(function (data) {
+						ctrl.$setValidity('isEmailAvailable', data.isValid);
+					});
+				});
+			});
+		}
+	};
+}]);

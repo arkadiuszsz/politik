@@ -57,4 +57,12 @@ class UserController extends \BaseController {
 		App::abort(204);
 	}
 
+	public function isEmailAvailable()
+	{
+		$email = Input::get('email');
+		return Response::json(array(
+			'isValid' => $this->users->isEmailAvailable($email)
+		));
+	}
+
 }

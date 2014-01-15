@@ -18,5 +18,6 @@ Route::get('/', array(
 Route::resource('sector', 'SectorController', array('only' => array('index', 'show')));
 Route::resource('state', 'StateController', array('only' => array('index', 'show', 'update')));
 Route::resource('user', 'UserController', array('only' => array('index', 'show')));
+Route::post('/create-account/is-email-available', 'UserController@isEmailAvailable');
 Route::post('/login', 'UserController@login');
 Route::post('/logout', 'UserController@logout');

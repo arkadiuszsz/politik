@@ -56,6 +56,11 @@ angular.module('Security', ['Api'])
 		}
 	};
 }])
+.factory('RegistrationService', function ($http) {
+	return {
+	
+	};
+})
 .run(function (AuthService) {
 	AuthService.cookieLogin();
 });
